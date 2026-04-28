@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saniya Shaikh | Portfolio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --blue: #1A5276;
+      --accent: #2E86C1;
+      --light: #EBF5FB;
+      --dark: #1a1a2e;
+      --text: #2c3e50;
+      --gray: #7f8c8d;
+    }
+    body { font-family: 'Segoe UI', sans-serif; color: var(--text); background: #fff; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; background: var(--dark);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem; z-index: 999;
+    }
+    nav .logo { color: #fff; font-size: 1.3rem; font-weight: 700; letter-spacing: 1px; }
+    nav .logo span { color: #5DADE2; }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav ul a { color: #bdc3c7; text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+    nav ul a:hover { color: #5DADE2; }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; background: linear-gradient(135deg, var(--dark) 0%, #16213e 60%, #0f3460 100%);
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 2rem;
+    }
+    .hero-content h1 { font-size: 3.5rem; color: #fff; font-weight: 800; }
+    .hero-content h1 span { color: #5DADE2; }
+    .hero-content .subtitle { font-size: 1.3rem; color: #bdc3c7; margin: 1rem 0 0.5rem; }
+    .hero-content .tagline { font-size: 1rem; color: #5DADE2; margin-bottom: 2rem; }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      padding: 0.8rem 2rem; border-radius: 30px; text-decoration: none;
+      font-weight: 600; font-size: 0.95rem; transition: all .3s;
+    }
+    .btn-primary { background: #5DADE2; color: #fff; }
+    .btn-primary:hover { background: #2E86C1; transform: translateY(-2px); }
+    .btn-outline { border: 2px solid #5DADE2; color: #5DADE2; }
+    .btn-outline:hover { background: #5DADE2; color: #fff; transform: translateY(-2px); }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; }
+    .section-title {
+      text-align: center; font-size: 2rem; font-weight: 700;
+      color: var(--blue); margin-bottom: 0.5rem;
+    }
+    .section-title::after {
+      content: ''; display: block; width: 60px; height: 4px;
+      background: #5DADE2; margin: 0.5rem auto 2.5rem;
+    }
+
+    /* ABOUT */
+    #about { background: var(--light); }
+    .about-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .about-text p { line-height: 1.8; color: var(--text); margin-bottom: 1rem; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .stat-card {
+      background: #fff; padding: 1.5rem; border-radius: 12px;
+      text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+    .stat-card .number { font-size: 2rem; font-weight: 800; color: var(--accent); }
+    .stat-card .label { font-size: 0.85rem; color: var(--gray); margin-top: 0.3rem; }
+
+    /* SKILLS */
+    #skills { background: #fff; }
+    .skills-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+    .skill-card {
+      background: var(--light); border-radius: 12px; padding: 1.5rem;
+      border-left: 4px solid var(--accent);
+    }
+    .skill-card h3 { color: var(--blue); margin-bottom: 1rem; font-size: 1rem; }
+    .skill-tag {
+      display: inline-block; background: var(--accent); color: #fff;
+      padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem;
+      margin: 0.3rem 0.2rem;
+    }
+
+    /* PROJECTS */
+    #projects { background: var(--light); }
+    .projects-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .project-card {
+      background: #fff; border-radius: 16px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform .3s, box-shadow .3s;
+    }
+    .project-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+    .project-banner {
+      height: 120px; display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+    }
+    .banner-1 { background: linear-gradient(135deg, #1A5276, #2E86C1); }
+    .banner-2 { background: linear-gradient(135deg, #1E8449, #27AE60); }
+    .banner-3 { background: linear-gradient(135deg, #7D3C98, #A569BD); }
+    .project-content { padding: 1.5rem; }
+    .project-content h3 { font-size: 1.05rem; color: var(--dark); margin-bottom: 0.5rem; }
+    .project-content p { font-size: 0.88rem; color: var(--gray); line-height: 1.6; margin-bottom: 1rem; }
+    .project-tags { margin-bottom: 1rem; }
+    .p-tag {
+      display: inline-block; background: var(--light); color: var(--accent);
+      padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.75rem; margin: 0.2rem 0.15rem;
+      border: 1px solid #AED6F1;
+    }
+    .project-links { display: flex; gap: 0.8rem; }
+    .proj-btn {
+      flex: 1; text-align: center; padding: 0.5rem; border-radius: 8px;
+      font-size: 0.8rem; font-weight: 600; text-decoration: none; transition: all .2s;
+    }
+    .proj-btn.code { background: var(--dark); color: #fff; }
+    .proj-btn.code:hover { background: var(--accent); }
+    .proj-btn.demo { border: 2px solid var(--accent); color: var(--accent); }
+    .proj-btn.demo:hover { background: var(--accent); color: #fff; }
+
+    /* CERTIFICATIONS */
+    #certifications { background: #fff; }
+    .cert-grid { max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+    .cert-card {
+      background: var(--light); border-radius: 12px; padding: 1.5rem;
+      text-align: center; border-top: 4px solid var(--accent);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .cert-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+    .cert-card h3 { font-size: 0.95rem; color: var(--blue); margin-bottom: 0.3rem; }
+    .cert-card p { font-size: 0.82rem; color: var(--gray); }
+    .cert-card .grade { font-size: 1.1rem; font-weight: 700; color: var(--accent); margin-top: 0.5rem; }
+
+    /* CONTACT */
+    #contact { background: var(--dark); text-align: center; }
+    #contact .section-title { color: #5DADE2; }
+    #contact .section-title::after { background: #5DADE2; }
+    #contact p { color: #bdc3c7; max-width: 500px; margin: 0 auto 2rem; line-height: 1.7; }
+    .contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* FOOTER */
+    footer { background: #0a0a1a; color: #555; text-align: center; padding: 1.5rem; font-size: 0.85rem; }
+
+    @media (max-width: 680px) {
+      .hero-content h1 { font-size: 2.2rem; }
+      .about-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Saniya<span>.</span></div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-content">
+    <h1>Hi, I'm <span>Saniya</span> 👋</h1>
+    <p class="subtitle">Computer Science Student · AI & Data Science Enthusiast</p>
+    <p class="tagline">📍 Hochschule Furtwangen University, Germany</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary">View My Projects</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <h2 class="section-title">About Me</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a B.Sc. Computer Science student currently in my first semester of the IBIS programme at <strong>Hochschule Furtwangen University</strong> in Germany, with a focus on Artificial Intelligence and Data Science.</p>
+      <p>Before moving to Germany, I completed my first year of B.Sc. Computer Science at Savitribai Phule Pune University (SGPA 9.55) and earned diplomas in Computer Programming and Graphic Design.</p>
+      <p>I love building things — whether it's data visualisations, web apps, or interactive dashboards. I'm always looking to learn something new. ✨</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card"><div class="number">3+</div><div class="label">Years Coding</div></div>
+      <div class="stat-card"><div class="number">9.55</div><div class="label">Best SGPA</div></div>
+      <div class="stat-card"><div class="number">6+</div><div class="label">Languages Known</div></div>
+      <div class="stat-card"><div class="number">3</div><div class="label">Certifications</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2 class="section-title">Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3>💻 Programming Languages</h3>
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">Java</span>
+      <span class="skill-tag">JavaScript</span>
+      <span class="skill-tag">C</span>
+      <span class="skill-tag">C++</span>
+      <span class="skill-tag">SQL</span>
+    </div>
+    <div class="skill-card">
+      <h3>📊 Data & AI</h3>
+      <span class="skill-tag">Pandas</span>
+      <span class="skill-tag">NumPy</span>
+      <span class="skill-tag">Matplotlib</span>
+      <span class="skill-tag">Seaborn</span>
+      <span class="skill-tag">Streamlit</span>
+      <span class="skill-tag">Plotly</span>
+    </div>
+    <div class="skill-card">
+      <h3>🌐 Web & Tools</h3>
+      <span class="skill-tag">HTML/CSS</span>
+      <span class="skill-tag">Git</span>
+      <span class="skill-tag">GitHub</span>
+      <span class="skill-tag">VS Code</span>
+      <span class="skill-tag">Jupyter</span>
+    </div>
+    <div class="skill-card">
+      <h3>🎨 Design</h3>
+      <span class="skill-tag">Photoshop</span>
+      <span class="skill-tag">Illustrator</span>
+      <span class="skill-tag">CorelDraw</span>
+      <span class="skill-tag">InDesign</span>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-banner banner-1">🌐</div>
+      <div class="project-content">
+        <h3>Personal Portfolio Website</h3>
+        <p>A fully responsive personal portfolio built from scratch using HTML, CSS and JavaScript — the one you're looking at right now!</p>
+        <div class="project-tags">
+          <span class="p-tag">HTML</span>
+          <span class="p-tag">CSS</span>
+          <span class="p-tag">JavaScript</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/yourusername/portfolio" class="proj-btn code">GitHub</a>
+          <a href="#" class="proj-btn demo">Live Demo</a>
+        </div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-banner banner-2">📊</div>
+      <div class="project-content">
+        <h3>Movie Ratings Data Analysis</h3>
+        <p>Exploratory data analysis of 5,000+ movies from the TMDB dataset. Includes genre trends, rating distributions and correlation heatmaps.</p>
+        <div class="project-tags">
+          <span class="p-tag">Python</span>
+          <span class="p-tag">Pandas</span>
+          <span class="p-tag">Matplotlib</span>
+          <span class="p-tag">Seaborn</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/yourusername/movie-analysis" class="proj-btn code">GitHub</a>
+          <a href="https://nbviewer.org" class="proj-btn demo">Notebook</a>
+        </div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-banner banner-3">🎵</div>
+      <div class="project-content">
+        <h3>Spotify Trends Dashboard</h3>
+        <p>Interactive web dashboard analysing Spotify listening trends with live filters by genre, year and popularity. Built with Streamlit.</p>
+        <div class="project-tags">
+          <span class="p-tag">Python</span>
+          <span class="p-tag">Streamlit</span>
+          <span class="p-tag">Plotly</span>
+          <span class="p-tag">Pandas</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/yourusername/spotify-dashboard" class="proj-btn code">GitHub</a>
+          <a href="#" class="proj-btn demo">Live App</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <h2 class="section-title">Certifications</h2>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <div class="cert-icon">💻</div>
+      <h3>Diploma in Computer Programming</h3>
+      <p>AiMS Computer Institute, Pune · Jul 2025</p>
+      <div class="grade">80% — A Grade</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🎨</div>
+      <h3>Certificate in Graphic Design</h3>
+      <p>AiMS Computer Institute, Pune · Apr 2024</p>
+      <div class="grade">78.5% — B+ Grade</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🎓</div>
+      <h3>B.Sc. Computer Science (Year 1)</h3>
+      <p>SPPU, Pune · 2024–2025</p>
+      <div class="grade">SGPA 9.55 / 10</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="section-title">Contact Me</h2>
+  <p>I'm open to internships, working student positions and collaborations in AI, Data Science or Software Development. Feel free to reach out!</p>
+  <div class="contact-links">
+    <a href="mailto:your.email@example.com" class="btn btn-primary">📧 Email Me</a>
+    <a href="https://github.com/yourusername" class="btn btn-outline">🔗 GitHub</a>
+    <a href="https://linkedin.com/in/yourprofile" class="btn btn-outline">💼 LinkedIn</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Saniya Imran Shaikh · Built with ❤️ in Furtwangen, Germany</p>
+</footer>
+
+</body>
+</html>
